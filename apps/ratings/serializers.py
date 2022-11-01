@@ -20,4 +20,4 @@ class RatingSerializer(serializers.ModelSerializer):
 
     def get_agent(self,obj):
         # agent goes to profile model, in profile model the relationship btn profile and user model is the user 
-        return obj.agent.user.username
+        return obj.agent.user.username 

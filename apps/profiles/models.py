@@ -23,6 +23,7 @@ class Profile(TimeStampedUUIDModel):
     country = CountryField(verbose_name=_("Country"),default="UG",blank=True,null=True)
     city = models.CharField(verbose_name=_("City"),max_length=180,default="Kampala",blank=False,null=False)
     is_buyer = models.BooleanField(verbose_name=_("Buyer"),default=False,help_text=_("Are you looking to Buy a Property?"))
+    top_seller = models.BooleanField(verbose_name=_("Top Seller"),default=False,help_text=_("Are you a top seller?"))
     is_seller = models.BooleanField(verbose_name=_("Seller"),default=False,help_text=_("Are you looking to Sell a Property?"))
     is_agent = models.BooleanField(verbose_name=_("Agent"),default=False,help_text=_("Are you an agent?"))
     top_agent = models.BooleanField(verbose_name=_("Top Agent"),default=False,help_text=_("Are you looking to Buy a Property?"))
