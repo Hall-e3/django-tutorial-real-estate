@@ -43,7 +43,7 @@ class UpdateProfileAPIView(APIView):
             raise ProfileNotFound
 
         user_name = request.user.username
-        if username !== username:
+        if username != username:
             raise NotYourProfile
 
         data = request.data
