@@ -30,7 +30,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         representation = super().to_representation(instance)
-        if instance.top-agent:
+        if instance.top_agent:
             representation["top_agent"] = True
             
         return representation
