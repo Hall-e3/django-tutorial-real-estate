@@ -21,7 +21,7 @@ class TopAgentsListAPIView(generics.ListAPIView):
 
 class GetProfileAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    renderer_classes = ["ProfileJsonRenderer"]
+    renderer_classes = [ProfileJSONRenderer]
 
     def get(self,request):
         user = self.request.user
@@ -32,7 +32,7 @@ class GetProfileAPIView(APIView):
 
 class UpdateProfileAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    renderer_classes = ["ProfileJsonRenderer"]
+    renderer_classes = [ProfileJSONRenderer]
 
     serializer_class = UpdateProfileSerializer
 
@@ -47,4 +47,8 @@ class UpdateProfileAPIView(APIView):
             raise NotYourProfile
 
         data = request.data
-        serializer 
+        serializer = UpdateProfileSerializer(instance=request.user.profile,data = data,partial=True)
+        serializer.is_valid()
+        serializer.save()
+
+        return Response(serializer.data,status=status.HTTP_200_OK)
