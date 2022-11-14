@@ -70,7 +70,7 @@ class Property(TimeStampedUUIDModel):
     def save(self,*args,**kwargs):
         self.title = str.title(self.title)
         self.description = str.capitalize(self.description)
-        self.ref_code = "".join(random.choices(string.ascii_uppercase + strings.digits, k=20))
+        self.ref_code = "".join(random.choices(string.ascii_uppercase + string.digits, k=20))
         super(Property,self).save(*args,**kwargs)
 
     @property
