@@ -6,6 +6,7 @@ from rest_framework import serializers
 
 User = get_user_model()
 
+
 class UserSerializer(serializers.ModelSerializer):
     gender = serializers.CharField(source="profile.gender")
     phone_number = PhoneNumberField(source="profile.phone_number")
@@ -19,25 +20,40 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id","username","email","first_name","last_name","full_name","gender","phone_number","profile_photo","country","city","top_seller"]
+        fields = [
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "full_name",
+            "gender",
+            "phone_number",
+            "profile_photo",
+            "country",
+            "city",
+            "top_seller",
+        ]
 
-        def get_first_name(self,obj):
+        def get_first_name(self, obj):
             return obj.first_name.title()
 
-        def get_last_name(self,obj):
+        def get_last_name(self, obj):
             return obj.last_name.title()
-# a two representation field serializer method, we are add the admin field if he is an admin
-        def to_representation(self,instance):
-            representation = super(UserSerializer,self).to_representation
+
+        # a two representation field serializer method, we are add the admin field if he is an admin
+        def to_representation(self, instance):
+            representation = super(UserSerializer, self).to_representation
             (instance)
             if instance.is_superuser:
                 representation["admin"] = True
 
             return representation
+
+
 #  here we are sub classing
 class CreateUserSerializer(UserCreateSerializer):
     # here we are then accessing the serializer's meta we are sub classing from
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ["id","username","email","first_name","last_name","password"]
-
+        fields = ["id", "username", "email", "first_name", "last_name", "password"]

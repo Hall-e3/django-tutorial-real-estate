@@ -54,7 +54,7 @@ black-diff:
 	docker-compose exec api black --diff --exclude=migrations .
 
 black:
-	docker-compose exec api black --exclude=migrations
+	docker-compose exec api black --exclude=migrations .
 
 isort-check:
 	docker-compose exec api isort . --check-only --skip env --skip migrations
