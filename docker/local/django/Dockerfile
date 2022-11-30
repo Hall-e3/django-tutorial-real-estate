@@ -14,11 +14,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
-&& apt-get install -y build_essential \
+&& apt-get install -y build-essential \
 && apt-get install -y libpq-dev \
 && apt-get install -y gettext \
 && apt-get install -y netcat gcc postgresql \
-&& apt-get purge -y autoremove -o APT::AutoRemove::RecommendsImportant=false \
+&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip
