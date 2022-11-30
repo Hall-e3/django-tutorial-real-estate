@@ -1,4 +1,9 @@
 from pathlib import Path
+from datetime import timedelta
+import logging
+import logging.config
+
+from django.utils.log import DEFAULT_LOGGING
 
 import environ
 
@@ -142,7 +147,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-from datetime import timedelta
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer", "JWT"),
@@ -173,10 +177,7 @@ DJOSER = {
     },
 }
 
-import logging
-import logging.config
 
-from django.utils.log import DEFAULT_LOGGING
 
 logger = logging.getLogger(__name__)
 
