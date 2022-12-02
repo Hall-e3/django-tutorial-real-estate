@@ -42,3 +42,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = AUTH_USER_MODEL
+
+    @classmethod
+    def _create(cls,model_class,*args,**kwargs):
+        manager = cls._get_manager(model_class)
