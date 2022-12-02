@@ -178,7 +178,6 @@ DJOSER = {
 }
 
 
-
 logger = logging.getLogger(__name__)
 
 LOG_LEVEL = "INFO"
